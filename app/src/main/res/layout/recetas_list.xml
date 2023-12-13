@@ -22,7 +22,7 @@
         android:layout_height="60dp"
         android:layout_marginStart="40dp"
         android:layout_marginTop="14dp"
-        android:layout_marginBottom="6dp"
+        android:layout_marginBottom="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -50,5 +50,13 @@
         app:layout_constraintStart_toEndOf="@+id/tvPaisOrigen"
         app:layout_constraintTop_toTopOf="@+id/tvPaisOrigen"
         tools:ignore="HardcodedText" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="409dp"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider"
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="84dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
