@@ -19,27 +19,17 @@ class RecetaAdapter(val context: Context) : ListAdapter<Receta, RecetaAdapter.Vi
         private val name: TextView = view.findViewById(R.id.tvNombreReceta)
         private val nation: TextView = view.findViewById(R.id.tvPaisOrigen)
         private val difficulty: TextView = view.findViewById(R.id.tvDificultad)
-        //private val imageView: ImageView = view.findViewById(R.id.imgReceta)
 
-        /*
-        private val ingredients = view.findViewById(R.id.tvIngredientes)
-        private val description = view.findViewById(R.id.tvDescripcion)
-        */
 
         fun bind (receta: Receta){
             name.text = receta.nombreReceta
             nation.text = "Origen: " + receta.nacion.toString()
             difficulty.text ="Dificultad: " + receta.dificultad.toString()
 
-           // Glide.with(context).load(receta.image).into(imageView)
-
-
             view.setOnClickListener {
                 onItemClickListener(receta)
             }
         }
-
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecetaAdapter.ViewHolder {

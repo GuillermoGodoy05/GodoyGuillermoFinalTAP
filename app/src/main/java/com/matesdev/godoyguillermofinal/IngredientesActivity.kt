@@ -9,6 +9,8 @@ import com.bumptech.glide.Glide
 class IngredientesActivity : AppCompatActivity() {
 
     private lateinit var textViewName: TextView
+    private lateinit var textViewIngredientes: TextView
+
     private lateinit var imageRecipe: ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -17,13 +19,17 @@ class IngredientesActivity : AppCompatActivity() {
 
         textViewName = findViewById(R.id.tvNameRecipe)
         imageRecipe = findViewById(R.id.imgReceta)
-
+        textViewIngredientes = findViewById(R.id.tvIngredientes)
 
         val bundle = intent.extras
         val nameSelected = bundle?.getString("name", "") ?: ""
         val urlSelected = bundle?.getString("urlImg", "")
+        val ingredientes = bundle?.getString("ingredients", "")
+
+
 
         textViewName.text = nameSelected
+        textViewIngredientes.text = "Ingredientes: " + ingredientes
 
         Glide.with(this)
             .load(urlSelected)
