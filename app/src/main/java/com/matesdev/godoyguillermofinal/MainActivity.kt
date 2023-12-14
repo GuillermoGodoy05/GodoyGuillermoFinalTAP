@@ -62,9 +62,9 @@ class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
         val imm = this.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         var view: View? = this.currentFocus
         if (view == null) {
-            view = View(this);
+            view = View(this)
         }
-        imm.hideSoftInputFromWindow(view.windowToken, 0);
+        imm.hideSoftInputFromWindow(view.windowToken, 0)
     }
 
     override fun onQueryTextSubmit(RecipeQuery: String?): Boolean {
