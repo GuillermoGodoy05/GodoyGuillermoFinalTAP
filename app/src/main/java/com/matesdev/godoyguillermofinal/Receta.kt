@@ -14,6 +14,6 @@ enum class RecetaDificultad {
 }
 
 enum class RecetaNacion {
-    Argentina, Brasil, Chile, Peru, Venezuela, Ecuador, Guyana, Honduras, Belice, Colombia, Paraguay, Jamaica
+    Argentina, Brasil, Chile, Peru, Venezuela, Ecuador, Guyana, Honduras, Belice, Colombia, Paraguay, Jamaica, Guatemala, Salvador, Cuba, Dominicana
 
 }
