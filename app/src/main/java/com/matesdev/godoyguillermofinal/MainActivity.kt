@@ -1,23 +1,34 @@
 package com.matesdev.godoyguillermofinal
 
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import android.view.inputmethod.InputMethodManager
+import android.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), SearchView.OnQueryTextListener {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: RecetaAdapter
+    private lateinit var searchView: SearchView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        recyclerView = findViewById(R.id.recycler_list)
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        adapter = RecetaAdapter(this)
 
+        recyclerView = findViewById(R.id.recycler_list)
+        searchView = findViewById(R.id.searchView)
+        searchView.setOnQueryTextListener(this)
+        hideKeyBoard()
+
+        recyclerView.layoutManager = LinearLayoutManager(this)
+
+
+        adapter = RecetaAdapter(this)
         recyclerView.adapter = adapter
 
         val listaRecetas = getRecetas()
@@ -28,13 +39,43 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("name", recipe.nombreReceta)
             intent.putExtra("urlImg", recipe.image)
             intent.putExtra("ingredients", recipe.ingredientes)
-            intent.putExtra("dificultad", recipe.dificultad)
-
 
             startActivity(intent)
-
         }
 
+
+    }
+
+
+    private fun getRecetasPorPais(pais: String, listaRecetas: List<Receta>) {
+        val recetasFiltradas = listaRecetas.filter { receta ->
+            receta.nacion.toString() == pais
+        }
+
+        hideKeyBoard()
+
+        adapter.submitList(recetasFiltradas.toMutableList())
+
+    }
+
+    private fun hideKeyBoard() {
+        val imm = this.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+        var view: View? = this.currentFocus
+        if (view == null) {
+            view = View(this);
+        }
+        imm.hideSoftInputFromWindow(view.windowToken, 0);
+    }
+
+    override fun onQueryTextSubmit(RecipeQuery: String?): Boolean {
+        if (!RecipeQuery.isNullOrBlank()) {
+            getRecetasPorPais(RecipeQuery, getRecetas())
+        }
+        return true
+    }
+
+    override fun onQueryTextChange(newText: String?): Boolean {
+        return false
     }
 
     private fun getRecetas(): MutableList<Receta> {
@@ -154,7 +195,38 @@ class MainActivity : AppCompatActivity() {
                     "Aceite\n" +
                     "1 pizca de Sal",
               "https://www.recetassalvador.com/base/stock/Recipe/105-image/105-image_web.jpg"),
+            Receta(17,"Tamales", RecetaNacion.Panamá, RecetaDificultad.CHEF,
+              "\n4 libras de Harina de maíz\n" +
+                        "3 libras de Manteca de cerdo\n" +
+                        "1 paquete de Hojas de plátano\n" +
+                        "1 trozo de Culantro\n" +
+                        "½ cebolla",
+            "https://donarepa.com.pa/wp-content/uploads/2018/06/Receta-Tamal-Panameno.jpg"),
+            Receta(18,"Asado", RecetaNacion.Uruguay, RecetaDificultad.CHEF,
+                "\n1 Carnes para asado (de 8 a 10 kg)\n" +
+                        "2 dientes de ajo finamente picados\n" +
+                        "Carbón\n" +
+                        "Chimichurri\n" +
+                        "1 atado de perejil picado (1 taza aproximadamente)\n" +
+                        "2 atados de culantro picados finamente (1 taza aproximadamente)",
+                "https://parrillaelpobreluis.com.ar/wp-content/uploads/877589.jpg"),
+            Receta(19,"Pachamanca", RecetaNacion.Bolivia, RecetaDificultad.EXPERTO,
+                "\n 1½ kilogramo de panceta de cerdo\n" +
+                        "½ kilogramo de pollo\n" +
+                        "½ kilogramo de carne de res (asado de tira)\n" +
+                        "1 taza de chicha de jora\n" +
+                        "½ taza de cerveza negra",
+                  "https://cdn0.recetasgratis.net/es/posts/0/1/7/pachamanca_a_la_olla_75710_orig.jpg"),
+            Receta(20,"Galletas de Jengibre", RecetaNacion.EEUU, RecetaDificultad.MEDIO,
+              "\n 11 1/2 barras de mantequilla (90 g c/u)\n" +
+                        "1 Lata Leche condensada NESTLÉ®\n" +
+                        "2 yemas de huevo\n" +
+                        "2 tazas de harina de trigo\n" +
+                        "1 cdta de polvo para hornear",
+                "https://www.codigococina.com/wp-content/uploads/2016/12/galletas_jengibre_canela.jpg"),
+
 
         )
     }
 }
+

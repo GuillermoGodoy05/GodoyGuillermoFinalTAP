@@ -21,6 +21,7 @@ class IngredientesActivity : AppCompatActivity() {
         imageRecipe = findViewById(R.id.imgReceta)
         textViewIngredientes = findViewById(R.id.tvIngredientes)
 
+
         val bundle = intent.extras
         val nameSelected = bundle?.getString("name", "") ?: ""
         val urlSelected = bundle?.getString("urlImg", "")
