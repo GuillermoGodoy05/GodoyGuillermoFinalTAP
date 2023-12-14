@@ -6,7 +6,6 @@ data class Receta (
     val nacion: RecetaNacion,
     val dificultad: RecetaDificultad,
     val ingredientes: String?,
-    val descripcion: String?,
     val image: String?
 )
 
@@ -15,6 +14,6 @@ enum class RecetaDificultad {
 }
 
 enum class RecetaNacion {
-    ARGENTINA, BRASIL, CHILE
+    Argentina, Brasil, Chile
 
 }

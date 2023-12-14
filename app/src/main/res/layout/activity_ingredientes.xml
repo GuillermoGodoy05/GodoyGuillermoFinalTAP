@@ -7,13 +7,36 @@
     tools:context=".IngredientesActivity">
 
     <TextView
-        android:id="@+id/tvSecon"
+        android:id="@+id/tvNameRecipe"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="segunda actividad"
+        android:layout_marginTop="20dp"
+        android:text="Receta"
         android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imgReceta"
+        android:layout_width="262dp"
+        android:layout_height="206dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvNameRecipe"
+        tools:ignore="ImageContrastCheck"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tvIngredientes"
+        android:layout_width="225dp"
+        android:layout_height="185dp"
+        android:layout_marginTop="36dp"
+        android:text="Ingredientes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgReceta" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
