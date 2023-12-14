@@ -32,7 +32,7 @@ class IngredientesActivity : AppCompatActivity() {
 
 
         textViewName.text = nameSelected
-        textViewIngredientes.text = "Ingredientes: " + ingredientes
+        textViewIngredientes.text = "Ingredientes: \n" + ingredientes
 
         Glide.with(this)
             .load(urlSelected)
