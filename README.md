@@ -15,8 +15,8 @@ Send me an email at guillermo.rgo92@gmail.com
 Puedes escribirme a guillermo.rgo92@gmail.com
 
 ### Install
+* Clone or download the repository and sync with Android Studio.
 `git clone https://github.com/GuillermoGodoy05/GodoyGuillermoFinalTAP`
-Clone or download the repository and sync with Android Studio.
 
 ## License
 No license
