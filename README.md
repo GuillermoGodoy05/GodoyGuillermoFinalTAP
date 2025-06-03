@@ -11,8 +11,8 @@ Kotlin app about Christmas recipes from different countries.
 
 
 ## Hiring
+Send me an email at guillermo.rgo92@gmail.com
 Puedes escribirme a guillermo.rgo92@gmail.com
-you can write to me at guillermo.rgo92@gmail.com
 
 ### Install
 `git clone https://github.com/GuillermoGodoy05/GodoyGuillermoFinalTAP`
